@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+var nodeExternals = require('webpack-node-externals')
 
 const {
   UglifyJsPlugin
@@ -7,11 +8,14 @@ const {
 
 module.exports = {
   entry: {
-    bundle: path.resolve(__dirname, '../src/index')
+    bundle: path.resolve(__dirname, './src/index')
   },
   output: {
-    filename: '[name].js'
+    filename: 'redux-request.js',
+    path: path.resolve(__dirname, './dist'),
+    libraryTarget: 'umd'
   },
+  externals: nodeExternals(),
   module: {
     rules: [{
       test: /\.js$/,
@@ -28,9 +32,8 @@ module.exports = {
     extensions: ['.js'],
     enforceExtension: false,
     modules: [
-      path.join(__dirname, '../src'),
-      'node_modules',
-      path.join(__dirname, '../libs')
+      path.join(__dirname, './src'),
+      'node_modules'
     ]
   },
   plugins: [new UglifyJsPlugin({commnents: false, compress: { warnings: false }})]

@@ -1,9 +1,10 @@
 {
-  "name": "redux-request",
+  "name": "easy-redux-request",
   "version": "1.0.0",
   "description": "A package for handling async actions in redux apps",
-  "main": "index.js",
+  "main": "dist/redux-request.js",
   "scripts": {
+    "build": "webpack --config ./webpack.config.babel.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "demo:client": "webpack-dev-server --config ./webpack.config.babel.demo.js --host 0.0.0.0 --port 8000 --inline --progress --colors",
     "demo:server": "node ./__demo__/src/server.js",
@@ -28,7 +29,8 @@
     "redux": ">=0.15.0",
     "redux-thunk": "^1.0.3",
     "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-node-externals": "^1.6.0"
   },
   "peerDependencies": {
     "redux": ">=0.15.0",
